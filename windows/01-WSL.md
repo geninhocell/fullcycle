@@ -1,5 +1,6 @@
 
 [github config wsl](https://github.com/codeedu/wsl2-docker-quickstart)
+[sliders](https://github.com/argentinaluiz/ambiente-dev-produtivo)
 
 - config_wsl linha 71, mudar nome de usuario
 
