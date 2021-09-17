@@ -3,18 +3,17 @@ import {
   IsISO8601,
   IsNotEmpty,
   IsString,
-  MaxLength
-} from "class-validator";
+  MaxLength,
+} from 'class-validator';
 
 import {
   TransactionCategory,
   TransactionCategoryList,
   TransactionType,
-  TransactionTypeList
-} from "../entities/transaction.entity";
+  TransactionTypeList,
+} from '../entities/transaction.entity';
 
 export class CreateTransactionDto {
-
   @IsISO8601()
   @IsNotEmpty()
   payment_date: Date;
