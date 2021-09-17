@@ -81,7 +81,7 @@ const ReportsNewPage: NextPage = () => {
                   color="primary"
                   fullWidth
                 >
-                  Pagar
+                  Salvar
                 </Button>
               </Box>
             </Grid>

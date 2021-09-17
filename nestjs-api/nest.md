@@ -111,3 +111,46 @@ nest g guard tenant/tenant
 
 ```bash
 nest g resource
+```
+
+## KAFKA
+
+```bash
+nest g service reports/request-report-generate
+
+npm install --save kafkajs @nestjs/microservices
+
+#                 main.ts
+# +app.connectMicroservice(makeKafkaOptions());
+# +await app.startAllMicroservices();
+
+#               reports.module
+# @Module({
+#   imports: [
+#     SequelizeModule.forFeature([Report, Account]),
+#     +ClientsModule.registerAsync([
+#       +{
+#         +name: 'KAFKA_SERVICE',
+#         +useFactory: () => makeKafkaOptions(),
+#       +},
+#     +]),
+#   ],
+#   controllers: [ReportsController],
+#   providers: [
+#     ReportsService,
+#     RequestReportGenerateService,
+#     +{
+#       +provide: 'KAFKA_PRODUCER',
+#       +useFactory: async (kafkaService: ClientKafka) => {
+#         +return kafkaService.connect();
+#       +},
+#       +inject: ['KAFKA_SERVICE'],
+#     +},
+#   ],
+# })
+
+docker-compose exec kafka bash
+
+# permite publicar varias mensagens no topico
+kafka-console-producer --topic reports-generated --bootstrap-server localhost:9092
+```

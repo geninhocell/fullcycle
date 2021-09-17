@@ -28,7 +28,7 @@ export class ReportsService {
     });
   }
 
-  async update(id: number, updateReportDto: UpdateReportDto) {
+  async update(id: string, updateReportDto: UpdateReportDto) {
     const report = await this.reportModel.findByPk(id, { rejectOnEmpty: true });
     return report.update(updateReportDto);
   }

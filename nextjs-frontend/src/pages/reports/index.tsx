@@ -1,4 +1,3 @@
-import { useKeycloak } from '@react-keycloak/ssr';
 import { format, parseISO } from 'date-fns';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
@@ -11,7 +10,7 @@ import {
   SearchState,
   PagingState,
 } from '@devexpress/dx-react-grid';
-import { Typography, Button } from '@material-ui/core';
+import { Typography, Button, Link } from '@material-ui/core';
 import {
   Grid,
   PagingPanel,
@@ -49,6 +48,13 @@ const columns: Column[] = [
   {
     name: 'file_url',
     title: 'Download',
+    getCellValue: (row: any, columnName: string) => {
+      return row[columnName] ? (
+        <Link href={row[columnName]} rel="noreferrer" target="_blank">
+          Link
+        </Link>
+      ) : null;
+    },
   },
   {
     name: 'created_at',
